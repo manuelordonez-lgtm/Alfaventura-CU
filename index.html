@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alfaventura - Aplicación interactiva para enseñar el abecedario a niños de preescolar y primaria">
+    <meta name="keywords" content="abecedario, educación, niños, aprendizaje interactivo">
+    <meta name="author" content="Alfaventura">
+    <title>Alfaventura - Aprende el Abecedario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Principal -->
+    <header class="header" role="banner">
+        <div class="header-top">
+            <div class="logo-container">
+                <img src="https://via.placeholder.com/60x60?text=Alfaventura" alt="Logo de Alfaventura" class="logo">
+                <h1 class="site-title">Alfaventura</h1>
+            </div>
+            <nav class="header-nav" role="navigation" aria-label="Navegación principal">
+                <button class="nav-btn" id="misionBtn" aria-label="Ver nuestra misión">Misión</button>
+                <button class="nav-btn" id="visionBtn" aria-label="Ver nuestra visión">Visión</button>
+                <button class="nav-btn" id="calidadBtn" aria-label="Ver información de calidad de software">Calidad de Software - ACA</button>
+                <button class="nav-btn" id="registroBtn" aria-label="Registrarse en Alfaventura">Registro</button>
+            </nav>
+        </div>
+
+        <!-- Banner Animado -->
+        <div class="banner-animado" role="region" aria-label="Banner de bienvenida">
+            <div class="banner-content">
+                <h2 class="banner-title">¡Bienvenido a Alfaventura!</h2>
+                <p class="banner-subtitle">Descubre el mágico mundo del abecedario</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Modal para Misión -->
+    <div id="misionModal" class="modal" role="dialog" aria-labelledby="misionTitle" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" id="closeMision" aria-label="Cerrar modal de misión">&times;</span>
+            <h2 id="misionTitle">Nuestra Misión</h2>
+            <p>Desencadenar la sinfonía del lenguaje mediante una experiencia lúdica y digital. Buscamos que el dominio fonético y visual del abecedario se convierta en la aventura inaugural del aprendizaje infantil, forjando una conexión intuitiva y perdurable con las bases de la comunicación.</p>
+        </div>
+    </div>
+
+    <!-- Modal para Visión -->
+    <div id="visionModal" class="modal" role="dialog" aria-labelledby="visionTitle" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" id="closeVision" aria-label="Cerrar modal de visión">&times;</span>
+            <h2 id="visionTitle">Nuestra Visión</h2>
+            <p>Ser el catalizador de la alfabetización temprana, evolucionando la memorización a una exploración constructiva y adaptativa. Visualizamos cada grafema como un componente estructural esencial en la arquitectura cognitiva del lenguaje, permitiendo a los niños interactuar, manipular y conceptualizar su rol dentro del ecosistema lingüístico.</p>
+        </div>
+    </div>
+
+    <!-- Modal para Calidad de Software -->
+    <div id="calidadModal" class="modal" role="dialog" aria-labelledby="calidadTitle" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" id="closeCalidad" aria-label="Cerrar modal de calidad">&times;</span>
+            <h2 id="calidadTitle">Calidad de Software - ACA</h2>
+            <!-- Aquí se debe colocar el enlace del video de youtube -->
+            <!-- Sintaxis para insertar video de YouTube: <iframe width="100%" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="Descripción del video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+            <p>Próximamente: Video de presentación sobre la calidad de software implementada en Alfaventura.</p>
+        </div>
+    </div>
+
+    <!-- Modal para Registro -->
+    <div id="registroModal" class="modal" role="dialog" aria-labelledby="registroTitle" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" id="closeRegistro" aria-label="Cerrar modal de registro">&times;</span>
+            <h2 id="registroTitle">Registro de Usuario</h2>
+            <form id="registroForm" class="form-registro">
+                <div class="form-group">
+                    <label for="nombreUsuario">Nombre Completo:</label>
+                    <input type="text" id="nombreUsuario" name="nombreUsuario" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="emailUsuario">Correo Electrónico:</label>
+                    <input type="email" id="emailUsuario" name="emailUsuario" required aria-required="true">
+                </div>
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="politicasCheck" name="politicasCheck" required aria-required="true">
+                    <label for="politicasCheck">Acepto las Políticas de Privacidad de Alfaventura y Términos y Condiciones de Uso</label>
+                </div>
+                <button type="submit" class="btn-submit">Registrarse</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <main class="main-content" role="main">
+        <!-- Alerta de Recomendación -->
+        <div id="alertaRecomendacion" class="alerta-recomendacion" role="alert">
+            <p><strong>¡Hola, amiguito!</strong> Te recomendamos empezar con la <strong>Opción 1</strong> para aprender el abecedario. ¡Así podrás disfrutar mejor de las otras opciones! 🌟</p>
+            <button id="cerrarAlerta" class="btn-cerrar-alerta">Entendido</button>
+        </div>
+
+        <!-- Menú de Opciones -->
+        <section class="opciones-menu" role="region" aria-label="Menú de opciones de aprendizaje">
+            <h2>Elige tu Aventura</h2>
+            <div class="opciones-container">
+                <button class="opcion-btn" id="opcion1Btn" data-opcion="1" aria-label="Opción 1: Aprende el abecedario">
+                    <span class="opcion-numero">1</span>
+                    <span class="opcion-titulo">Aprende el Abecedario</span>
+                </button>
+                <button class="opcion-btn" id="opcion2Btn" data-opcion="2" aria-label="Opción 2: Juego de coincidencia visual">
+                    <span class="opcion-numero">2</span>
+                    <span class="opcion-titulo">Juego de Coincidencia</span>
+                </button>
+                <button class="opcion-btn" id="opcion3Btn" data-opcion="3" aria-label="Opción 3: Juego de teclado">
+                    <span class="opcion-numero">3</span>
+                    <span class="opcion-titulo">Juego de Teclado</span>
+                </button>
+                <button class="opcion-btn" id="opcion4Btn" data-opcion="4" aria-label="Opción 4: Pronunciación de letras">
+                    <span class="opcion-numero">4</span>
+                    <span class="opcion-titulo">Pronuncia Letras</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Contenedor de Opciones -->
+        <div class="contenedor-opciones">
+            <!-- Opción 1: Aprende el Abecedario -->
+            <section id="opcion1" class="opcion-contenido" role="region" aria-label="Opción 1: Aprende el abecedario">
+                <h2>Opción 1: Aprende el Abecedario</h2>
+                <div class="abecedario-aprender" id="abecedarioAprender"></div>
+            </section>
+
+            <!-- Opción 2: Juego de Coincidencia -->
+            <section id="opcion2" class="opcion-contenido" role="region" aria-label="Opción 2: Juego de coincidencia visual">
+                <h2>Opción 2: Juego de Coincidencia</h2>
+                <div class="juego-coincidencia">
+                    <div class="abecedario-oculto" id="abecedarioOculto"></div>
+                    <div class="contador-juego">
+                        <p>Aciertos: <span id="aciertosCoincidencia">0</span></p>
+                        <p>Fallos: <span id="fallosCoincidencia">0</span></p>
+                    </div>
+                    <div class="abecedario-visible" id="abecedarioVisible"></div>
+                    <div id="mensajeCoincidencia" class="mensaje-juego"></div>
+                </div>
+            </section>
+
+            <!-- Opción 3: Juego de Teclado -->
+            <section id="opcion3" class="opcion-contenido" role="region" aria-label="Opción 3: Juego de teclado">
+                <h2>Opción 3: Juego de Teclado</h2>
+                <div class="juego-teclado">
+                    <div class="abecedario-espacios" id="abecedarioEspacios"></div>
+                    <div class="contador-juego">
+                        <p>Aciertos: <span id="aciertosKeyboard">0</span></p>
+                        <p>Fallos: <span id="fallosKeyboard">0</span></p>
+                    </div>
+                    <div id="mensajeTeclado" class="mensaje-juego"></div>
+                    <p class="instrucciones">Escucha el sonido y presiona la letra correcta en tu teclado.</p>
+                </div>
+            </section>
+
+            <!-- Opción 4: Pronuncia Letras -->
+            <section id="opcion4" class="opcion-contenido" role="region" aria-label="Opción 4: Pronunciación de letras">
+                <h2>Opción 4: Pronuncia Letras</h2>
+                <div class="juego-pronunciacion">
+                    <div class="abecedario-pronunciacion" id="abecedarioPronunciacion"></div>
+                    <div id="mensajePronunciacion" class="mensaje-juego"></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Sección de Opiniones -->
+    <section class="seccion-opiniones" role="region" aria-label="Sección de opiniones de usuarios">
+        <h2>¿Qué te pareció Alfaventura?</h2>
+        <form id="formularioOpinion" class="formulario-opinion">
+            <div class="form-group">
+                <label for="emailOpinion">Tu Correo Electrónico:</label>
+                <input type="email" id="emailOpinion" name="emailOpinion" required aria-required="true">
+            </div>
+            <div class="form-group">
+                <label>Califica tu experiencia:</label>
+                <div class="rating-container">
+                    <input type="radio" id="star5" name="rating" value="5" aria-label="Excelente">
+                    <label for="star5" class="star">⭐</label>
+                    <input type="radio" id="star4" name="rating" value="4" aria-label="Muy bueno">
+                    <label for="star4" class="star">⭐</label>
+                    <input type="radio" id="star3" name="rating" value="3" aria-label="Bueno">
+                    <label for="star3" class="star">⭐</label>
+                    <input type="radio" id="star2" name="rating" value="2" aria-label="Regular">
+                    <label for="star2" class="star">⭐</label>
+                    <input type="radio" id="star1" name="rating" value="1" aria-label="Necesita mejorar">
+                    <label for="star1" class="star">⭐</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="comentarioOpinion">Tu Opinión:</label>
+                <textarea id="comentarioOpinion" name="comentarioOpinion" rows="4" placeholder="Cuéntanos qué te pareció..."></textarea>
+            </div>
+            <div class="form-group checkbox">
+                <input type="checkbox" id="tratamientoDatos" name="tratamientoDatos" required aria-required="true">
+                <label for="tratamientoDatos">Acepto el tratamiento de mis datos personales</label>
+            </div>
+            <button type="submit" class="btn-submit">Enviar Opinión</button>
+        </form>
+    </section>
+
+    <!-- Footer con Redes Sociales -->
+    <footer class="footer" role="contentinfo">
+        <div class="redes-sociales" role="navigation" aria-label="Redes sociales de Alfaventura">
+            <h3>Síguenos</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Visita nuestro Facebook">
+                    <img src="https://via.placeholder.com/40x40?text=FB" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Visita nuestro Instagram">
+                    <img src="https://via.placeholder.com/40x40?text=IG" alt="Instagram">
+                </a>
+                <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Visita nuestro Twitter">
+                    <img src="https://via.placeholder.com/40x40?text=TW" alt="Twitter">
+                </a>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 Alfaventura. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
